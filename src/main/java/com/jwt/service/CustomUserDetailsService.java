@@ -12,20 +12,18 @@ import com.jwt.entity.User;
 import com.jwt.repository.UserRepository;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService{
+public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	private UserRepository repository ;
-	
+	private UserRepository repository;
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		System.out.println("*************************"+username);
 		User user = repository.findByUsername(username);
-		
-		System.out.println("*************************"+user);
-		
-		return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),new ArrayList<>());
+
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+				new ArrayList<>());
 	}
 
 }

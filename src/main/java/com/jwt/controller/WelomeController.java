@@ -51,7 +51,6 @@ public class WelomeController {
 	
 	@PostMapping("/authenticate")
 	public String generateToken(@RequestBody User user) throws Exception {
-		System.out.println("*******AuthReq******************"+user);
 		try {
 		authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword())
@@ -77,8 +76,5 @@ public class WelomeController {
 		return userRepository.save(updatedUser);
 		
 	}
-	
-	
-	
-	
+
 }
